@@ -1,103 +1,112 @@
-import Image from "next/image";
+'use client';
+
+import { useLanguage } from './context/LanguageContext';
+import Layout from './components/Layout';
+import Image from 'next/image';
+import Link from 'next/link';
+import ClientLayout from './client-layout';
+import { useEffect } from 'react';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <ClientLayout>
+      <HomePage />
+    </ClientLayout>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+function HomePage() {
+  const { t, language } = useLanguage();
+  
+  useEffect(() => {
+    console.log('HomePage rendering with language:', language);
+  }, [language]);
+  
+  return (
+    <Layout>
+      {/* Hero Section */}
+      <section className="py-20 text-center">
+        <h1 className="text-5xl font-bold mb-6">
+          {t('WHO IS WHAT?', 'WHO IS WHAT?')}
+        </h1>
+        <p className="text-xl max-w-3xl mx-auto mb-10">
+          {t(
+            '복잡함을 단순하게, 단순함을 강력하게. 우리는 창의적 혁신을 추구합니다.',
+            'Simplifying complexity, empowering simplicity. We pursue creative innovation.'
+          )}
+        </p>
+        <div className="flex justify-center space-x-4">
+          <Link href="/about" className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-900 transition">
+            {t('더 알아보기', 'Learn More')}
+          </Link>
+          <Link href="/contact" className="border border-black px-8 py-3 rounded-md hover:bg-gray-100 transition">
+            {t('문의하기', 'Contact Us')}
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      
+      {/* Feature Blocks */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">
+            {t('우리의 철학', 'Our Philosophy')}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="bg-white p-8 shadow-md">
+              <h3 className="text-xl font-bold mb-4">
+                {t('단순함의 강력함', 'Power of Simplicity')}
+              </h3>
+              <p>
+                {t(
+                  '복잡한 세상에서 단순함은 강력한 무기입니다. 우리는 불필요한 것을 제거하고 본질에 집중합니다.',
+                  'In a complex world, simplicity is a powerful weapon. We eliminate the unnecessary and focus on the essence.'
+                )}
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 shadow-md">
+              <h3 className="text-xl font-bold mb-4">
+                {t('창의적 혁신', 'Creative Innovation')}
+              </h3>
+              <p>
+                {t(
+                  '기존의 틀을 넘어서는 창의적 사고로 새로운 가치를 창출합니다. 혁신은 우리의 DNA입니다.',
+                  'We create new value with creative thinking that goes beyond existing frameworks. Innovation is in our DNA.'
+                )}
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 shadow-md">
+              <h3 className="text-xl font-bold mb-4">
+                {t('깊은 철학', 'Profound Philosophy')}
+              </h3>
+              <p>
+                {t(
+                  '표면적 단순함 뒤에는 깊은 철학과 고민이 있습니다. 우리는 본질적 가치를 중요시합니다.',
+                  'Behind the surface simplicity lies deep philosophy and contemplation. We value essential meaning.'
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Call to Action */}
+      <section className="py-20 text-center">
+        <h2 className="text-3xl font-bold mb-6">
+          {t('함께 혁신적인 미래를 만들어가요', 'Let\'s Create an Innovative Future Together')}
+        </h2>
+        <p className="text-xl max-w-3xl mx-auto mb-10">
+          {t(
+            '당신의 아이디어를 현실로 만들 준비가 되었습니다. 지금 WhoisWhat과 함께하세요.',
+            'We are ready to turn your ideas into reality. Join WhoisWhat now.'
+          )}
+        </p>
+        <Link href="/contact" className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-900 transition">
+          {t('프로젝트 시작하기', 'Start a Project')}
+        </Link>
+      </section>
+    </Layout>
   );
 }
