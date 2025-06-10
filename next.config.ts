@@ -4,8 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // 정적 내보내기 시 이미지 최적화 비활성화
   },
-  // 정적 내보내기는 i18n과 함께 사용할 수 없음
-  // 대신 우리는 커스텀 언어 컨텍스트를 만들어 사용함
+  trailingSlash: true, // 정적 내보내기 시 도움이 됨
+  // 정적 파일 복사 보장
+  distDir: 'out',
 };
 
 module.exports = nextConfig;
