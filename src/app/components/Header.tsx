@@ -44,6 +44,11 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/growpromise" className="hover:underline">
+                    {t('growpromise', 'growpromise')}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact" className="hover:underline">
                     {t('연락처', 'Contact')}
                   </Link>
