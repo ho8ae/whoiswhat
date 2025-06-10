@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'WhoisWhat - 창의적 혁신을 추구하는 기업',
   description: '복잡함을 단순하게, 단순함을 강력하게. WhoisWhat은 창의적 혁신을 통해 가치를 창출합니다.',
+  verification: {
+    google: 'r5FQ0RPWxL-VKYijktRGbxznEyyyVvspMGruXjzAqy8',
+  },
 };
 
 export default function RootLayout({
