@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Heart, Camera, Gift, Sprout, Star, Users, Shield, Download } from 'lucide-react';
+import Image from 'next/image';
 
 export default function GrowPromise() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,13 +39,13 @@ export default function GrowPromise() {
           {/* App Icon */}
           <div className="mb-8 flex justify-center">
             <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-3xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
-              <Sprout className="w-16 h-16 text-white" />
+              <Image src="/icon.png" alt="App Icon" width={200} height={200} className='rounded-2xl' />
             </div>
           </div>
 
           {/* Main Title */}
           <h1 className="text-6xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-green-500 via-yellow-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-green-600">
               쑥쑥약속
             </span>
           </h1>
@@ -110,45 +111,99 @@ export default function GrowPromise() {
         </div>
       </section>
 
-
-
-      {/* Benefits Section */}
-      <section className="py-20 px-4">
+      {/* About & Contact Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-green-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
-            <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
-              왜 쑥쑥약속인가요?
-            </span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Users, title: "가족 유대감 강화", desc: "부모와 아이가 함께 약속을 만들고 지키며 더욱 가까워져요" },
-              { icon: Star, title: "습관 형성 도움", desc: "게이미피케이션을 통해 좋은 습관을 자연스럽게 만들어요" },
-              { icon: Shield, title: "안전한 환경", desc: "아이들을 위한 안전하고 건전한 디지털 환경을 제공해요" }
-            ].map((benefit, index) => (
-              <div key={index} className="text-center p-8 bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="mb-6 flex justify-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center">
-                    <benefit.icon className="w-10 h-10 text-white" />
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 앱 소개 */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+                <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+                  쑥쑥약속 소개
+                </span>
+              </h2>
+              
+              <div className="space-y-4">
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  쑥쑥약속은 부모와 아이가 함께 만든 약속을 통해 성장하는 특별한 앱입니다.
+                </p>
+                
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <Heart className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-gray-600">약속을 만들고 함께 지키며 가족 유대감을 강화해요</p>
+                  </div>
+                  <div className="flex items-start">
+                    <Camera className="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-gray-600">사진으로 약속 인증하고 칭찬 스티커를 받아요</p>
+                  </div>
+                  <div className="flex items-start">
+                    <Sprout className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-gray-600">약속을 지킬 때마다 식물이 쑥쑥 자라나요</p>
+                  </div>
+                  <div className="flex items-start">
+                    <Shield className="w-5 h-5 text-purple-500 mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-gray-600">아이들을 위한 안전하고 건전한 디지털 환경</p>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
               </div>
-            ))}
+            </div>
+
+            {/* 개발자 연락처 */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                개발자에게 연락하기
+              </h3>
+              
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    궁금한 점이 있거나 문의사항이 있으시면 언제든 연락해주세요!
+                  </p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-2xl p-6 text-center">
+                  <p className="text-sm text-gray-500 mb-2">이메일</p>
+                  <a 
+                    href="mailto:whoiswhat.team@gmail.com"
+                    className="text-lg font-semibold text-blue-600 hover:text-blue-700 transition-colors duration-200"
+                  >
+                    whoiswhat.team@gmail.com
+                  </a>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-600">
+                    <Heart className="w-4 h-4 text-red-400 mr-2" />
+                    <span className="text-sm">앱 개선 제안</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <Shield className="w-4 h-4 text-green-400 mr-2" />
+                    <span className="text-sm">기술 지원</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
+                    <span className="text-sm">사용자 피드백</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-    
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-800 text-center">
         <p className="text-gray-400">
           © 2025 쑥쑥약속(GrowPromise). 모든 권리 보유.
         </p>
+        {/* 개인정보처리방침 Url */}
+        <a href="https://docs.google.com/document/d/1E6In0_c1aaAVHQpOyBLYoPntfVRa6lN3SGfV3dCZ_0k/edit?usp=sharing" className="text-gray-400 hover:text-gray-200 transition-colors duration-200">
+          개인정보처리방침
+        </a>
       </footer>
     </div>
   );
